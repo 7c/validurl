@@ -14,5 +14,17 @@ testing might take a while, since we are testing against 1.3Million URLs. Test f
 
 `npm run test`
 
+## Install
+```
+npm i --save @7c/validurl
+```
+
+## Usage
+```
+const validURL = require('@7c/validurl')
+
+console.log(validURL('http://localhost'))
+```
+
 
 All kind of bugreports are welcome

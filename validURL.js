@@ -1,13 +1,12 @@
 const net = require('net')
 const querystring = require('querystring')
 
-function validHostname(domainName,rootDot=null) {
+function validHostname(domainName) {
     var domainNameRegex = /^(?:[a-z0-9](?:[a-z0-9_\-]{0,61}[a-z0-9])?\.){0,126}(?:[a-z0-9](?:[a-z0-9\-]{0,61}[a-z0-9]))\.?$/i
     // is an ip host
     if (net.isIPv4(domainName) || net.isIPv6(domainName.replace(/[\[\]]/g,''))) return true
     // remove last '.'
     domainName=domainName.replace(/\.$/,'')
-    if (rootDot == null) rootDot = false
     if (domainName.length < 2) return false
     if (domainName.length > 255) return false
     var lastChar = domainName[domainName.length - 1]
@@ -16,13 +15,7 @@ function validHostname(domainName,rootDot=null) {
         // using numbers without . in body
         return false
     }
-
-    if (rootDot) {
-      if (lastChar !== '.') return false
-    } else {
-      if (lastChar === '.') return false
-    }
-  
+    
     return domainNameRegex.test(domainName)
 }
 
