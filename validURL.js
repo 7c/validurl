@@ -9,13 +9,12 @@ function validHostname(domainName) {
     domainName=domainName.replace(/\.$/,'')
     if (domainName.length < 2) return false
     if (domainName.length > 255) return false
-    var lastChar = domainName[domainName.length - 1]
     
     if (domainName.search(/\./)<0 && domainName.search(/^[0-9]+$/)==0) {
         // using numbers without . in body
         return false
     }
-    
+
     return domainNameRegex.test(domainName)
 }
 
@@ -29,7 +28,8 @@ module.exports = (host) => {
 
         // we accept any protocol
         // we normalize hosts without protocol
-        if (host.search(/^[a-z]+:\/\//i)!==0) {
+        // if (host.search(/^[a-z]+:\/\//i)!==0) {
+        if (host.search(/^[^/]+\/\//)!==0) {
             // no protocol
             if (host.search(/^\//)<0) {
                 if (host.search(/\:80/)>0) host='http://'+host;

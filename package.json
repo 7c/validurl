@@ -1,6 +1,6 @@
 {
   "name": "@7c/validurl",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "rigorous url validation",
   "keywords": [
     "url",

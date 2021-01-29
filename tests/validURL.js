@@ -67,6 +67,8 @@ describe("validURL Function", function () {
     expect(url("http://www.foo.bar./", {})).to.be.true;
     expect(url("http://.www.foo.bar./", {})).to.be.false;
     expect(url('https://rdap.nic.xn--1ck2e1b/domain/test.xn--1ck2e1b')).to.be.true
+
+    expect(url('https//nedomain7812423.com/echo')).to.be.false
   });
   /*
     it("allows valid urls", function() {
